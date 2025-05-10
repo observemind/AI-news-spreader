@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    depends_on:
+      - database
+    environment:
+      - NODE_ENV=development
+      - PORT=5000
+      - DB_HOST=database
+      - DB_PORT=5432
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - JWT_SECRET=${JWT_SECRET}
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000/api
+
+  ai-service:
+    build: ./ai-service
+    ports:
+      - "5001:5000"
+
+  crawler:
+    build: ./crawler
+    depends_on:
+      - backend
+      - ai-service
+    environment:
+      - NEWS_API_KEY=${NEWS_API_KEY}
+    ports:
+      - "4000:4000"
+
+volumes:
+  pgdata:

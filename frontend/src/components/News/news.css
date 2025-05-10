@@ -1,0 +1,157 @@
+.news-list-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.news-list-container h2 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #f0f4f8;
+  padding-bottom: 0.75rem;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* News Item Styles */
+.news-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem;
+  transition: box-shadow 0.3s;
+}
+
+.news-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.news-meta {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.news-category {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.category-positive {
+  background-color: #d5f5e3;
+  color: #1e8449;
+}
+
+.category-negative {
+  background-color: #fadbd8;
+  color: #c0392b;
+}
+
+.category-verified {
+  background-color: #d4e6f1;
+  color: #2874a6;
+}
+
+.category-default {
+  background-color: #f0f4f8;
+  color: #7f8c8d;
+}
+
+.news-severity {
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.news-time {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+}
+
+.news-title {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: #2c3e50;
+}
+
+.news-content {
+  color: #34495e;
+  max-height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.news-content.expanded {
+  max-height: none;
+}
+
+.news-content p {
+  margin-top: 0;
+}
+
+.news-expand-button {
+  background: none;
+  border: none;
+  color: #3498db;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.news-source {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-top: 1rem;
+}
+
+.news-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  justify-content: flex-end;
+}
+
+.news-action-button {
+  padding: 0.4rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.3s;
+}
+
+.news-action-button.edit {
+  background-color: #3498db;
+  color: white;
+}
+
+.news-action-button.edit:hover {
+  background-color: #2980b9;
+}
+
+.news-action-button.save {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.news-action-button.save:hover {
+  background-color: #27ae60;
+}
+
